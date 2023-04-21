@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool canFly;
     public Transform groundCheck;
     public LayerMask groundMask;
     public float groundDistance = 0.4f;
@@ -38,12 +39,31 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(move * moveSpeed * Time.deltaTime);
     
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (canFly)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            if (Input.GetButton("Jump"))
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
+            else if (Input.GetKey("left ctrl") || Input.GetKey("left shift"))
+            {
+                velocity.y = -Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
+            else
+            {
+                velocity.y = 0;
+            }
         }
+        else
+        {
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
 
-        velocity.y += gravity * Time.deltaTime;
+            velocity.y += gravity * Time.deltaTime;
+        }
+        
 
         controller.Move(velocity * Time.deltaTime);
     }
