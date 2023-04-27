@@ -6,7 +6,7 @@ public class ShelfTrigger : MonoBehaviour
 {
     [SerializeField] FridgeScript fScript;
     [SerializeField] int shelfNumber;
-    int count = 0;
+    [SerializeField] int count = 0;
 
     void Awake()
     {
@@ -27,11 +27,16 @@ public class ShelfTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (!other.TryGetComponent(out ObjectGrabbable objectGrabbable))
+            return;
         count++;
     }
 
     void OnTriggerExit(Collider other)
     {
+        if (!other.TryGetComponent(out ObjectGrabbable objectGrabbable))
+            return;
+            
         count--;
         if (count == 0)
         {

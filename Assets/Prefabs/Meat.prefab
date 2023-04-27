@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 161258922509446342}
   - component: {fileID: 161258922509446339}
   - component: {fileID: 161258922509446336}
-  - component: {fileID: 5907890803837505397}
   - component: {fileID: 7165707319904338689}
   - component: {fileID: 4550318487555964226}
+  - component: {fileID: 5907890803837505397}
   m_Layer: 0
   m_Name: Meat
   m_TagString: Untagged
@@ -86,22 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5907890803837505397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 161258922509446343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bc0bd50188ad654b85a65d386c10a22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foodItem: 1
-  cookTime: 3
-  cookedMaterial: {fileID: 2100000, guid: bddbd01ef2ddd6b4484db1dda8acb5af, type: 2}
-  range: 0.06
 --- !u!64 &7165707319904338689
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -132,3 +116,19 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &5907890803837505397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161258922509446343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc0bd50188ad654b85a65d386c10a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodItem: 1
+  cookTime: 3
+  cookedMaterial: {fileID: 2100000, guid: bddbd01ef2ddd6b4484db1dda8acb5af, type: 2}
+  range: 0.06

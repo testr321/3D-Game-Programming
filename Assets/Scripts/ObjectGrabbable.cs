@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ObjectGrabbable : MonoBehaviour
 {
+    public bool plateItem;
     public bool foodItem;
     public float cookTime;
     public Material cookedMaterial;
-    [SerializeField] float range;
+    float range;
     Rigidbody rb;
     Transform objectGrabPointTransform;
     void Awake()
@@ -18,13 +19,18 @@ public class ObjectGrabbable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!foodItem)
+            return;
+
         range = gameObject.transform.localScale.y * 1.2f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!foodItem)
+            return;
+
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down * range), out RaycastHit raycastHit, range))
         {
             if (raycastHit.transform.gameObject.tag == "Stove")
@@ -45,7 +51,7 @@ public class ObjectGrabbable : MonoBehaviour
     {
         if (objectGrabPointTransform != null)
         {
-            float lerpSpeed = 10f;
+            float lerpSpeed = 20f;
             Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
             rb.MovePosition(newPosition);
         }
