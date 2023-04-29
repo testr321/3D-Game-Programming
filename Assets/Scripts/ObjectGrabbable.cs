@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectGrabbable : MonoBehaviour
 {
+    public new string name;
     public bool plateItem;
     public bool foodItem;
     public float cookTime;
@@ -70,21 +71,4 @@ public class ObjectGrabbable : MonoBehaviour
         rb.useGravity = true;
         rb.isKinematic = false;
     }
-
-    // Vector3 direction = Vector3.down;
-    //     Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
-    //     Debug.DrawRay(transform.position, transform.TransformDirection(direction * range));
-
-    //     if (!Physics.Raycast(theRay, out RaycastHit hit, range))
-    //     {
-    //         velocity.y += gravity * Time.deltaTime;
-    //     }
-    //     else
-    //     {
-    //         Debug.Log(hit.transform);
-    //         velocity.y = 0f;
-    //     }
-            
-
-    //     transform.position += velocity * Time.deltaTime;
 }

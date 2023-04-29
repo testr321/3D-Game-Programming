@@ -128,7 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc0bd50188ad654b85a65d386c10a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Meat
+  plateItem: 0
   foodItem: 1
   cookTime: 3
   cookedMaterial: {fileID: 2100000, guid: bddbd01ef2ddd6b4484db1dda8acb5af, type: 2}
-  range: 0.06

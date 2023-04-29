@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectGrabPointScript : MonoBehaviour
 {
-    bool trigger;
+    // bool trigger;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,7 @@ public class ObjectGrabPointScript : MonoBehaviour
         
         if (!other.TryGetComponent(out ObjectGrabbable objectGrabbable))
         {
-            trigger = true;
+            // trigger = true;
             // Debug.Log("ObjectGrabPointScript: OnTriggerStay");
             
             Vector3 objectPosition = other.gameObject.transform.position;
@@ -43,7 +43,7 @@ public class ObjectGrabPointScript : MonoBehaviour
     {
         if (!other.TryGetComponent(out ObjectGrabbable objectGrabbable))
         {
-            trigger = false;
+            // trigger = false;
             // Debug.Log("ObjectGrabPointScript: OnTriggerExit");
             Vector3 defaultLocalPosition = Vector3.zero;
             defaultLocalPosition.z = 1.5f;
