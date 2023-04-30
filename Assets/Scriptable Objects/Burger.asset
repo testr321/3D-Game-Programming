@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: becdb9ae27c235e41816890e713acfd4, type: 3}
-  m_Name: MenuScriptableObject
+  m_Script: {fileID: 11500000, guid: fae0785e09b40094e8c4f878261a1292, type: 3}
+  m_Name: Burger
   m_EditorClassIdentifier: 
   items:
+  - {fileID: 161258922509446343, guid: 39be61ecd6ceb4e46a68172e615a5487, type: 3}
+  - {fileID: 161258922509446343, guid: 39be61ecd6ceb4e46a68172e615a5487, type: 3}
   - {fileID: 161258922509446343, guid: 39be61ecd6ceb4e46a68172e615a5487, type: 3}

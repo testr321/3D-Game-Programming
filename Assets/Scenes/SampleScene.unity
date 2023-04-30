@@ -1265,8 +1265,6 @@ MonoBehaviour:
   pickUpLayerMask:
     serializedVersion: 2
     m_Bits: 531
-  firstClick: 0
-  holding: 0
 --- !u!114 &817284124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2397,7 +2395,7 @@ RectTransform:
   - {fileID: 1836284414}
   - {fileID: 1620829218}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3426,7 +3424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3758046076320678220, guid: b1cbe89dedcf92e499e363d2ca79385b, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3758046076320678220, guid: b1cbe89dedcf92e499e363d2ca79385b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3494,7 +3492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8016916614877704401, guid: b1cbe89dedcf92e499e363d2ca79385b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1cbe89dedcf92e499e363d2ca79385b, type: 3}

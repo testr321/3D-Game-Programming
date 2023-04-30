@@ -6,16 +6,18 @@ using TMPro;
 public class OrderTableScript : MonoBehaviour
 {
     [SerializeField] BoxCollider placeItemsBoxCollider;
-    [SerializeField] MenuScriptableObject menu;
+    [SerializeField] MenuItemsScriptableObject menu;
     [SerializeField] TextMeshProUGUI orderText;
     [SerializeField] PlayerPickUpDrop playerPickUpDrop;
+    List<FoodItemScriptableObject> order = new List<FoodItemScriptableObject>();
+
     
     // Start is called before the first frame update
     void Start()
     {
         RandomOrder();
         int i = 0;
-        foreach (GameObject go in order)
+        foreach (FoodItemScriptableObject go in order)
         {
             orderText.text += order[i].name + "\n";
             i++;
@@ -58,9 +60,11 @@ public class OrderTableScript : MonoBehaviour
         //     Destroy(plate);
     }
 
-    List<GameObject> order = new List<GameObject>();
     void RandomOrder()
     {
-        order.Add(menu.items[0]);
+        foreach (FoodItemScriptableObject food in menu.items)
+            Debug.Log(food);
+            
+        order.Add(menu.items[Random.Range(0, menu.GetLen() + 1)]);
     }
 }
