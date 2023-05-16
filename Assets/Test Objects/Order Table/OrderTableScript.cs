@@ -39,21 +39,25 @@ public class OrderTableScript : MonoBehaviour
             placeItemsBoxCollider.size/2f,
             placeItemsBoxCollider.transform.rotation);
 
-        List<GameObject> itemsOnPlate = new List<GameObject>();
+        List<GameObject> itemsOnPlate = null;
         // GameObject plate = null;
         foreach (Collider collider in colliderArray)
         {
             if (collider.TryGetComponent(out PlateScript plateScript))
             {
-                // plate = collider.gameObject;
                 itemsOnPlate = plateScript.GetItemsOnPlate();
             }
         }
         
-        foreach (GameObject gameObject in itemsOnPlate)
+        if (itemsOnPlate != null)
         {
-            Debug.Log(gameObject);
-            Destroy(gameObject);
+            foreach (GameObject gameObject in itemsOnPlate)
+            {
+                Debug.Log(gameObject);
+                Destroy(gameObject);
+            }
+            // foreach (GameObject gameObject in itemsOnPlate)
+            //     Debug.Log(gameObject);
         }
         
         // if (plate != null)
@@ -64,7 +68,7 @@ public class OrderTableScript : MonoBehaviour
     {
         foreach (FoodItemScriptableObject food in menu.items)
             Debug.Log(food);
-            
-        order.Add(menu.items[Random.Range(0, menu.GetLen() + 1)]);
+
+        order.Add(menu.items[Random.Range(0, menu.GetLen())]);
     }
 }

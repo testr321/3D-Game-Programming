@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class ObjectGrabbable : MonoBehaviour
 {
+    public bool playing;
     public new string name;
     public bool plateItem;
     public bool foodItem;
     public float cookTime;
+    // AudioClip cookingAudio;
+    [SerializeField] AudioSource src;
+    // testr bb;
     public Material cookedMaterial;
     float range;
     Rigidbody rb;
@@ -15,6 +19,7 @@ public class ObjectGrabbable : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        // bb = GetComponent<testr>();
     }
 
     // Start is called before the first frame update
@@ -36,9 +41,19 @@ public class ObjectGrabbable : MonoBehaviour
         {
             if (raycastHit.transform.gameObject.tag == "Stove")
             {
+                if (!playing)
+                {
+                    playing = true;
+                    src.Play();
+                }
                 cookTime -= Time.deltaTime;
                 Debug.Log("Cooking");
             }
+        }
+        else
+        {
+            playing = false;
+            src.Stop();
         }
 
         if (cookTime <= 0)
@@ -70,5 +85,11 @@ public class ObjectGrabbable : MonoBehaviour
         this.objectGrabPointTransform = null;
         rb.useGravity = true;
         rb.isKinematic = false;
+    }
+
+    public void PlayCookingAudio()
+    {
+        // src.clip = cookingAudio;
+        // src.Play();
     }
 }
