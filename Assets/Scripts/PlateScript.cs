@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlateScript : MonoBehaviour
 {
     [SerializeField] BoxCollider placeItemsBoxCollider;
+    List<GameObject> itemsOnPlate = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        itemsOnPlate.Add(gameObject);
     }
 
     // Update is called once per frame
@@ -25,19 +27,17 @@ public class PlateScript : MonoBehaviour
             placeItemsBoxCollider.size/2f, 
             placeItemsBoxCollider.transform.rotation);
 
+        Debug.Log("PlateScript :" + colliderArray.Length);
         foreach (Collider collider in colliderArray)
         {
+            Debug.Log("PlateScript :" + collider.transform);
             if (collider.TryGetComponent(out ObjectGrabbable objectGrabbable))
             {
-                if (!objectGrabbable.plateItem && objectGrabbable.gameObject.transform.parent == null)
+                if (!objectGrabbable.plateItem && !collider.TryGetComponent(out FixedJoint fixedJoint))
                 {
-                    collider.attachedRigidbody.useGravity = false;
-                    collider.attachedRigidbody.isKinematic = true;
-                    collider.transform.parent = gameObject.transform;
-                    Vector3 newLocalPosition = collider.transform.localPosition;
-                    newLocalPosition.y += 0.1f;
-                    collider.transform.localPosition = newLocalPosition;
-                    Debug.Log("PlateScript: " + collider);
+                    itemsOnPlate.Add(collider.gameObject);
+                    collider.gameObject.AddComponent<FixedJoint>();
+                    collider.gameObject.GetComponent<FixedJoint>().connectedBody = gameObject.GetComponent<Rigidbody>();
                 }
             }
         }
@@ -47,5 +47,15 @@ public class PlateScript : MonoBehaviour
     {
         Debug.Log("PlateScript: DropItems");
         // gameObject.transform.DetachChildren();
+    }
+    
+    public void DetachItem(GameObject gameObject)
+    {
+        itemsOnPlate.Remove(gameObject);
+    }
+
+    public List<GameObject> GetItemsOnPlate()
+    {
+        return (itemsOnPlate);
     }
 }

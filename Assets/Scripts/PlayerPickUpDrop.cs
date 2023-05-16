@@ -10,6 +10,7 @@ public class PlayerPickUpDrop : MonoBehaviour
 
     ObjectGrabbable objectGrabbable;
     PlateScript plateScript;
+    bool holding;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,36 +20,47 @@ public class PlayerPickUpDrop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("PlayerPickUpDrop: GetMouseButton");
             float pickUpDistance = 2f;
             if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
             {
                 if (raycastHit.transform.TryGetComponent(out objectGrabbable))
-                {
+                { 
+                    holding = true;
                     if (raycastHit.transform.TryGetComponent(out plateScript))
                     {
                         plateScript.PickUpItems();
                     }
-                    objectGrabbable.gameObject.transform.parent = null;
-                    // Vector3 newLocalPosition = objectGrabbable.gameObject.transform.localPosition;
-                    // newLocalPosition.y -= 1f;
-                    // objectGrabbable.gameObject.transform.localPosition = newLocalPosition;
+                    if (objectGrabbable.gameObject.TryGetComponent(out FixedJoint fixedJoint))
+                    {
+                        fixedJoint.connectedBody.gameObject.GetComponent<PlateScript>().DetachItem(objectGrabbable.gameObject);
+                        Destroy(objectGrabbable.gameObject.GetComponent<FixedJoint>());
+                    }
                     objectGrabbable.Grab(objectGrabPointTransform);
                     Debug.Log("PlayerPickUpDrop: " + objectGrabbable);
                 }
             }
         }
-        else if (objectGrabbable != null)
+        else if (Input.GetMouseButtonUp(0))
         {
-            // if (plateScript != null)
-            //     {
-            //         plateScript.DropItems();
-                    
-            //     }
-                plateScript = null;
-                objectGrabbable.Drop();
-                objectGrabbable = null;
+        // if (plateScript != null)
+        //     {
+        //         plateScript.DropItems();
+                
+        //     }
+            holding = false;
+            if (objectGrabbable == null)
+                return;
+            plateScript = null;
+            objectGrabbable.Drop();
+            objectGrabbable = null;
         }
+    }
+
+    public bool IsHolding()
+    {
+        return holding;
     }
 }
