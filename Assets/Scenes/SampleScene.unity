@@ -356,7 +356,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &235392351
+--- !u!114 &235392349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,11 +365,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 235392347}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bbc1d7d75ef8146b577f5af517d097, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bcba842f0389ca43b8da696494c449a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  target: {fileID: 0}
+  chair: {fileID: 2139058942}
+  rotationSpeed: 5
 --- !u!1001 &284051632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1879,7 +1879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47129079a541b0047887155ae11eb824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 500
   playerBody: {fileID: 817284122}
 --- !u!1 &1014275398
 GameObject:
@@ -2718,6 +2718,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
       propertyPath: m_RootOrder
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3563,6 +3575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chairArray: []
   chairLoc: []
+  chairRot: []
 --- !u!4 &2139058944
 Transform:
   m_ObjectHideFlags: 0

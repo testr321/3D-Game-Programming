@@ -6,8 +6,10 @@ public class Test : MonoBehaviour
 {
     [SerializeField] GameObject[] chairArray;
     public Vector3[] chairLoc;
+    public Quaternion[] chairRot;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         chairArray = GameObject.FindGameObjectsWithTag("Chair");
         foreach (GameObject chair in chairArray)
@@ -16,12 +18,19 @@ public class Test : MonoBehaviour
         }
 
         chairLoc = new Vector3[chairArray.Length];
+        chairRot = new Quaternion[chairArray.Length];
 
-        for(int i = 0; i < chairArray.Length; i++)
+        for (int i = 0; i < chairArray.Length; i++)
         {
             chairLoc[i] = chairArray[i].transform.position;
+            chairRot[i] = chairArray[i].transform.rotation;
             Debug.Log(chairLoc[i]);
         }
+    }
+
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame
