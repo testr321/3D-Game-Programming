@@ -6,8 +6,14 @@ using UnityEngine.AI;
 public class MoveTo : MonoBehaviour
 {
     public GameObject chair;
-    Test cLocation;
+    public GameObject status;
+    public GameObject[] chairArray;
+
+    Test testScript;
+    ChairStatus chairStatus;
+
     Vector3 destination;
+
     NavMeshAgent agent;
 
     public float rotationSpeed = 5f;
@@ -15,15 +21,29 @@ public class MoveTo : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        //cLocation = GetComponent<Test>();
-        destination.Set(5, 5, 5);
+        //destination.Set(5, 5, 5);
         agent = GetComponent<NavMeshAgent>();
-        cLocation = chair.GetComponent<Test>();
+        testScript = chair.GetComponent<Test>();
     }
 
     void Start()
     {
-        destination = cLocation.chairLoc[0];
+        //destination = testScript.chairLoc[0];
+        chairArray = testScript.chairArray;
+
+        foreach (GameObject chair in testScript.chairArray)
+        {
+            chairStatus = chair.GetComponent<ChairStatus>();
+
+            if(chairStatus.occupiedChair == false)
+            {
+                destination = chair.transform.position;
+                chairStatus.UpdateOccupancy();
+                Debug.Log(destination);
+                break;
+            }
+        }
+
         agent.destination = destination;
         agent.updateRotation = false;
 
@@ -34,14 +54,14 @@ public class MoveTo : MonoBehaviour
     void Update()
     {
         /*if (agent.remainingDistance > agent.stoppingDistance)
-            agent.transform.LookAt(cLocation.chairLoc[0]);
+            agent.transform.LookAt(testScript.chairLoc[0]);
         else
-            agent.transform.rotation = cLocation.chairRot[0];
+            agent.transform.rotation = testScript.chairRot[0];
         */
         
         if (agent.velocity.sqrMagnitude > Mathf.Epsilon)
         {
-            Quaternion targetRotation = cLocation.chairRot[0]; //Quaternion.LookRotation(agent.velocity.normalized);
+            Quaternion targetRotation = testScript.chairRot[0]; //Quaternion.LookRotation(agent.velocity.normalized);
             agent.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 

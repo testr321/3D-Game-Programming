@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    [SerializeField] GameObject[] chairArray;
+    [SerializeField] public GameObject[] chairArray;
     public Vector3[] chairLoc;
     public Quaternion[] chairRot;
 
