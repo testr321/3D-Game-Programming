@@ -64,6 +64,9 @@ public class NPCController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelChanger.isChangingScene)
+            return;
+            
         patientText.text = Mathf.Ceil(patientTimer).ToString("0");
 
         if (agent.remainingDistance <= agent.stoppingDistance)

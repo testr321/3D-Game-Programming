@@ -40,6 +40,9 @@ public class ObjectGrabbable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelChanger.isChangingScene)
+            return;
+            
         if (!foodItem)
             return;
 

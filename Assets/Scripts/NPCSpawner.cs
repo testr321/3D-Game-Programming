@@ -17,6 +17,9 @@ public class NPCSpawner : MonoBehaviour
 
     void Update()
     {
+        if (LevelChanger.isChangingScene)
+            return;
+            
         if (remainingTime <= 0)
         {
             Instantiate(npcPrefab, spawnPosition, spawnRotation);

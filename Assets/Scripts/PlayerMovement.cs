@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelChanger.isChangingScene)
+            return;
+            
         if (Input.GetKeyDown("f"))
             canFly = !canFly;
 

@@ -5,9 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    LevelChanger levelChanger;
+
+    void Awake()
+    {
+        levelChanger = FindObjectOfType<LevelChanger>();
+    }
+
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        levelChanger.FadeToLevel(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitGame()

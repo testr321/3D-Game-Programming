@@ -38,6 +38,9 @@ public class OrderScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelChanger.isChangingScene)
+            return;
+            
         testing = false;
         orderText.gameObject.SetActive(npcController.isSeated());
 

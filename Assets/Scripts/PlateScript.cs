@@ -13,12 +13,6 @@ public class PlateScript : MonoBehaviour
         itemsOnPlate.Add(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void PickUpItems()
     {
         // Debug.Log("PlateScript: PickUpItems");

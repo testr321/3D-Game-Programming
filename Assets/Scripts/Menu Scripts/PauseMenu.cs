@@ -3,15 +3,25 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool gameIsPaused = false;
+    public static bool gameIsPaused;
+    
     [SerializeField] GameObject gameplayUI;
     [SerializeField] GameObject pauseMenuUI;
     [SerializeField] GameObject endGameMenuUI;
 
+    LevelChanger levelChanger;
+
+    void Awake()
+    {
+        levelChanger = FindObjectOfType<LevelChanger>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log(gameIsPaused);
+        if (LevelChanger.isChangingScene)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gameIsPaused)
@@ -59,12 +69,12 @@ public class PauseMenu : MonoBehaviour
     {
         Resume();
         Cursor.lockState = CursorLockMode.None;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        levelChanger.FadeToLevel(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     public void ReloadScene()
     {
         Resume();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        levelChanger.FadeToLevel(SceneManager.GetActiveScene().buildIndex);
     }
 }
