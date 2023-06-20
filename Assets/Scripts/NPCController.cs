@@ -11,6 +11,7 @@ public class NPCController : MonoBehaviour
     [SerializeField] float startingPatient;
     [SerializeField] float patientTimer;
 
+    NPCAnimationController npcAnimationController;
     GameObject selectedChair;
     NavMeshAgent agent;
     QueueManager queueManager;
@@ -25,6 +26,7 @@ public class NPCController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        npcAnimationController = GetComponent<NPCAnimationController>();
         agent = GetComponent<NavMeshAgent>();
         queueManager = FindObjectOfType<QueueManager>();
         destoryManager = FindObjectOfType<DestoryManager>();
@@ -107,6 +109,8 @@ public class NPCController : MonoBehaviour
                 selectedChair = null;
             }
         }
+
+        npcAnimationController.SetSitting(seated);
     }
 
     public void SetChair(GameObject chair)

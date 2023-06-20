@@ -12,7 +12,7 @@ public class NPCSpawner : MonoBehaviour
 
     void Start()
     {
-        // GameObject newNPC = Instantiate(npc);
+
     }
 
     void Update()

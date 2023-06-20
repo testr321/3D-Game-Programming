@@ -3056,6 +3056,7 @@ GameObject:
   - component: {fileID: 8885733495712413446}
   - component: {fileID: 9152691972344223696}
   - component: {fileID: 849273002348884834}
+  - component: {fileID: 3856791383618027688}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -3094,7 +3095,7 @@ Animator:
   m_GameObject: {fileID: 8342228961570876088}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fed28696e3c9b344ca0ea2a9abb040e3, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -3306,6 +3307,18 @@ MonoBehaviour:
   menu: {fileID: 11400000, guid: b664ad3a0c88ba246841f968340bb900, type: 2}
   orderText: {fileID: 2739382664805540020}
   src: {fileID: 8885733495712413446}
+--- !u!114 &3856791383618027688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8342228961570876088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4689684c0e08fe94ebe5c9883bab8126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8394351179614949653
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     void Awake()
     {
         levelChanger = FindObjectOfType<LevelChanger>();
+        Resume();
     }
 
     // Update is called once per frame
@@ -26,39 +27,49 @@ public class PauseMenu : MonoBehaviour
         {
             if (gameIsPaused)
             {
-                Resume();
+                OnResumeButton();
             }
             else
             {
-                Pause();
+                OnPauseButton();
             }
         }
     }
 
-    public void Resume()
+    public void OnResumeButton()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        pauseMenuUI.SetActive(false);
+        gameplayUI.SetActive(true);
+        Resume();
+    }
+
+    public void OnPauseButton()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        gameplayUI.SetActive(false);
+        pauseMenuUI.SetActive(true);
+        Pause();
+    }
+
+    public void Resume()
+    {
         gameIsPaused = false;
         Time.timeScale = 1f;
         AudioListener.pause = false;
-        pauseMenuUI.SetActive(false);
-        gameplayUI.SetActive(true);
     }
 
     public void Pause()
     {
-        Cursor.lockState = CursorLockMode.None;
         gameIsPaused = true;
         Time.timeScale = 0f;
         AudioListener.pause = true;
-        gameplayUI.SetActive(false);
-        pauseMenuUI.SetActive(true);
     }
 
     public void EndGame()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         PauseMenu.gameIsPaused = true;
-        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
         AudioListener.pause = true;
         gameplayUI.SetActive(false);
@@ -67,16 +78,11 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu()
     {
-        Resume();
-        gameplayUI.SetActive(false);
-        Cursor.lockState = CursorLockMode.None;
         levelChanger.FadeToLevel(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     public void ReloadScene()
     {
-        Resume();
-        gameplayUI.SetActive(false);
         levelChanger.FadeToLevel(SceneManager.GetActiveScene().buildIndex);
     }
 }

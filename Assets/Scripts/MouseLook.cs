@@ -18,6 +18,7 @@ public class MouseLook : MonoBehaviour
     {
         if (LevelChanger.isChangingScene)
             return;
+        
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSensitivity;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSensitivity;
 

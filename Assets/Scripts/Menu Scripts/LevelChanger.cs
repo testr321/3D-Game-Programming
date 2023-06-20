@@ -17,6 +17,10 @@ public class LevelChanger : MonoBehaviour
 
     public void OnFadeComplete()
     {
+        if (levelToLoad == 0)
+            Cursor.lockState = CursorLockMode.Confined;
+        else if (levelToLoad == 1)
+            Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadScene(levelToLoad);
     }
 
