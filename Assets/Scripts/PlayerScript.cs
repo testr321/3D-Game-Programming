@@ -7,7 +7,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] int startHealth;
     [SerializeField] HeartUIScript heartUIScript;
     [SerializeField] TextMeshProUGUI customerServedText;
-    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI gameEndScoreText;
+    [SerializeField] TextMeshProUGUI nextLifeText;
 
     PauseMenu pauseMenu;    
     int consecutiveCustomersServed;
@@ -25,6 +26,7 @@ public class PlayerScript : MonoBehaviour
         health = startHealth;
         heartUIScript.UpdateUI();
         customerServedText.text = score.ToString();
+        nextLifeText.text =  (10 - consecutiveCustomersServed).ToString();
     }
 
     // Update is called once per frame
@@ -50,6 +52,7 @@ public class PlayerScript : MonoBehaviour
         consecutiveCustomersServed++;
         score++;
         customerServedText.text = score.ToString();
+        nextLifeText.text =  (10 - consecutiveCustomersServed).ToString();
         if (consecutiveCustomersServed < 10)
             return;
 
@@ -64,12 +67,13 @@ public class PlayerScript : MonoBehaviour
 
     public void CustomerLeft()
     {
+        nextLifeText.text = "10";
         consecutiveCustomersServed = 0;
         health--;
         heartUIScript.UpdateUI();
         if (health == 0)
         {
-            scoreText.text = score.ToString();
+            gameEndScoreText.text = score.ToString();
             pauseMenu.EndGame();
         }
     }
