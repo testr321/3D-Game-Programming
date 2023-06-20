@@ -30,6 +30,9 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelChanger.isChangingScene || PauseMenu.gameIsPaused)
+            return;
+            
         if (Input.GetKeyDown(KeyCode.Minus))
         {
             CustomerLeft();

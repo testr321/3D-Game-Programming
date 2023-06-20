@@ -18,6 +18,9 @@ public class ChairStatus : MonoBehaviour
 
     void Update()
     {
+        if (LevelChanger.isChangingScene)
+            return;
+            
         if (test)
         {
             SetUnoccupied();
