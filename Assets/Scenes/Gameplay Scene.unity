@@ -645,7 +645,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 840, y: 440}
+  m_AnchoredPosition: {x: 797, y: 440}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &139401634
@@ -2965,8 +2965,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3032,7 +3032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -41.9}
+  m_AnchoredPosition: {x: 0, y: -78}
   m_SizeDelta: {x: 112.783, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &571866866
@@ -7714,7 +7714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartImage: {fileID: 2800000, guid: 83e55ab6536e3c04ca8b09e4bf450441, type: 3}
-  heartPosition: {x: 0, y: -50, z: 0}
+  heartPosition: {x: 60, y: -60, z: 0}
   heartList: []
 --- !u!4 &1631844548 stripped
 Transform:
@@ -9427,7 +9427,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 112.783, y: 50}
+  m_SizeDelta: {x: 224.441, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2055225452
 MonoBehaviour:
@@ -9476,8 +9476,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

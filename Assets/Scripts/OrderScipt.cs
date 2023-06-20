@@ -9,6 +9,7 @@ public class OrderScript : MonoBehaviour
     [SerializeField] BoxCollider placeItemsBoxCollider;
     [SerializeField] MenuItemsScriptableObject menu;
     [SerializeField] TextMeshProUGUI orderText;
+    [SerializeField] AudioSource src;
 
     NPCController npcController;
     PlayerPickUpDrop playerPickUpDrop;
@@ -71,6 +72,11 @@ public class OrderScript : MonoBehaviour
 
         if (itemsOnPlate == null)
             return;
+
+        if (src != null)
+        {
+            src.Play();
+        }
 
         foreach (FoodItemScriptableObject order in orders)
         {

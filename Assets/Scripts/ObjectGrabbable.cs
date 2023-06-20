@@ -51,7 +51,7 @@ public class ObjectGrabbable : MonoBehaviour
         {
             if (raycastHit.transform.gameObject.tag == "Stove")
             {
-                if (!playing)
+                if (!playing && src != null)
                 {
                     playing = true;
                     src.Play();

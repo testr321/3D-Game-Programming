@@ -20,20 +20,19 @@ public class HeartUIScript : MonoBehaviour
 
         for (int i = 0; i < maxHealth; i++)
         {
-            heartPosition.x += 50f;
-
             GameObject heartGameObject = new GameObject("Heart " + (i + 1));
             heartGameObject.SetActive(false);
 
             heartGameObject.AddComponent<RawImage>();
             heartGameObject.GetComponent<RawImage>().texture = heartImage;
 
-            heartGameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+            heartGameObject.transform.localScale = new Vector3(1f, 1f, 1f);
             heartGameObject.transform.SetParent(gameObject.transform);
             heartGameObject.transform.localPosition = heartPosition;
             heartList[i] = gameObject.transform.GetChild(i).gameObject;
             if (i < health)
                 heartGameObject.SetActive(true);
+            heartPosition.x += 100f;
         }
     }
 

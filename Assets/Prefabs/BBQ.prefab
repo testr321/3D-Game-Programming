@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4139595785540764574}
   - component: {fileID: 1330583100871803485}
   - component: {fileID: 1537181632381306948}
-  - component: {fileID: 5042779818114720618}
   m_Layer: 9
   m_Name: BBQ
   m_TagString: Stove
@@ -135,15 +134,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5042779818114720618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7354669867095979278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c091cadf847ce7344bd5076c1de1fbc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

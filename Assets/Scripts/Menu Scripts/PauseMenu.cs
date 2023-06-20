@@ -68,6 +68,7 @@ public class PauseMenu : MonoBehaviour
     public void MainMenu()
     {
         Resume();
+        gameplayUI.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         levelChanger.FadeToLevel(SceneManager.GetActiveScene().buildIndex - 1);
     }
@@ -75,6 +76,7 @@ public class PauseMenu : MonoBehaviour
     public void ReloadScene()
     {
         Resume();
+        gameplayUI.SetActive(false);
         levelChanger.FadeToLevel(SceneManager.GetActiveScene().buildIndex);
     }
 }
