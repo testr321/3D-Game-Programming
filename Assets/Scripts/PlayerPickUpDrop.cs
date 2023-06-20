@@ -22,7 +22,7 @@ public class PlayerPickUpDrop : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("PlayerPickUpDrop: GetMouseButton");
+            // Debug.Log("PlayerPickUpDrop: GetMouseButton");
             float pickUpDistance = 2f;
             if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
             {
@@ -39,7 +39,7 @@ public class PlayerPickUpDrop : MonoBehaviour
                         Destroy(objectGrabbable.gameObject.GetComponent<FixedJoint>());
                     }
                     objectGrabbable.Grab(objectGrabPointTransform);
-                    Debug.Log("PlayerPickUpDrop: " + objectGrabbable);
+                    // Debug.Log("PlayerPickUpDrop: " + objectGrabbable);
                 }
             }
         }

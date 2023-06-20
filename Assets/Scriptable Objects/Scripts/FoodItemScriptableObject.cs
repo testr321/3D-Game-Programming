@@ -6,5 +6,5 @@ using UnityEngine;
 public class FoodItemScriptableObject : ScriptableObject
 {
     public GameObject[] items;
-    
+    public bool[] cooked;   
 }

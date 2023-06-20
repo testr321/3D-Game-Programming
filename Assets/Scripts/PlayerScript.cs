@@ -7,6 +7,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] int maxHealth = 3;
     [SerializeField] int health = 1;
     [SerializeField] HeartUIScript heartUIScript;
+    
+    int customersServed;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +25,6 @@ public class PlayerScript : MonoBehaviour
                 return;
             health--;
             heartUIScript.UpdateUI();
-            if (health == 0)
-            {
-                Debug.Log("End Game");
-            }
         }
 
         if (Input.GetKeyDown(KeyCode.Equals))
@@ -36,8 +34,37 @@ public class PlayerScript : MonoBehaviour
             health++;
             heartUIScript.UpdateUI();
         }
+
+        if (customersServed >= 10)
+        {
+            customersServed = 0;
+            health++;
+            heartUIScript.UpdateUI();
+        }
+
+        if (health == 0)
+        {
+            EndGame();
+        }
     }
 
+    void EndGame()
+    {
+        Debug.Log("End Game");
+    }
+
+    public void CustomerServed()
+    {
+        customersServed++;
+    }
+
+    public void CustomerLeft()
+    {
+        customersServed = 0;
+        health--;
+        heartUIScript.UpdateUI();
+    }
+    
     public int GetMaxHealth()
     {
         return (maxHealth);
@@ -47,4 +74,6 @@ public class PlayerScript : MonoBehaviour
     {
         return (health);
     }
+
+
 }

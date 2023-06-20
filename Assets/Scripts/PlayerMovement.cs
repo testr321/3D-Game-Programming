@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             }
-            else if (Input.GetKey("left ctrl") || Input.GetKey("left shift"))
+            else if (Input.GetKey("left ctrl"))
             {
                 velocity.y = -Mathf.Sqrt(jumpHeight * -2f * gravity);
             }
