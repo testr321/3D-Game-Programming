@@ -1,21 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
-    [SerializeField] int maxHealth = 3;
-    [SerializeField] int health = 1;
+    [SerializeField] int maxHealth;
+    [SerializeField] int startHealth;
     [SerializeField] HeartUIScript heartUIScript;
     [SerializeField] TextMeshProUGUI customerServedText;
-    
+    [SerializeField] TextMeshProUGUI scoreText;
+
+    PauseMenu pauseMenu;    
     int consecutiveCustomersServed;
     int score;
+    int health;
+
+    void Awake()
+    {
+        pauseMenu = FindObjectOfType<PauseMenu>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        health = startHealth;
+        heartUIScript.UpdateUI();
         customerServedText.text = score.ToString();
     }
 
@@ -24,36 +32,14 @@ public class PlayerScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Minus))
         {
-            if (health <= 0)
-                return;
-            health--;
-            heartUIScript.UpdateUI();
+            CustomerLeft();
         }
 
         if (Input.GetKeyDown(KeyCode.Equals))
         {
-            if (health >= maxHealth)
-                return;
-            health++;
-            heartUIScript.UpdateUI();
+            consecutiveCustomersServed = 9;
+            CustomerServed();
         }
-
-        if (consecutiveCustomersServed >= 10)
-        {
-            consecutiveCustomersServed = 0;
-            health++;
-            heartUIScript.UpdateUI();
-        }
-
-        if (health == 0)
-        {
-            EndGame();
-        }
-    }
-
-    void EndGame()
-    {
-        Debug.Log("End Game");
     }
 
     public void CustomerServed()
@@ -61,6 +47,16 @@ public class PlayerScript : MonoBehaviour
         consecutiveCustomersServed++;
         score++;
         customerServedText.text = score.ToString();
+        if (consecutiveCustomersServed < 10)
+            return;
+
+        consecutiveCustomersServed = 0;
+
+        if (health >= maxHealth)
+            return;
+            
+        health++;
+        heartUIScript.UpdateUI();
     }
 
     public void CustomerLeft()
@@ -68,6 +64,11 @@ public class PlayerScript : MonoBehaviour
         consecutiveCustomersServed = 0;
         health--;
         heartUIScript.UpdateUI();
+        if (health == 0)
+        {
+            scoreText.text = score.ToString();
+            pauseMenu.EndGame();
+        }
     }
     
     public int GetMaxHealth()
