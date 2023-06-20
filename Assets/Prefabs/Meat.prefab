@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4550318487555964226}
   - component: {fileID: 5907890803837505397}
   - component: {fileID: 528610423117327514}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Meat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,9 +95,17 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161258922509446343}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
@@ -108,10 +116,21 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161258922509446343}
-  serializedVersion: 2
+  serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -129,13 +148,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc0bd50188ad654b85a65d386c10a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playing: 0
   name: Meat
+  cookedTimer: 0
+  cookTime: 10
+  burnTime: 20
+  rawMaterial: {fileID: 2100000, guid: e5d75856277c59f47bea2d0e4789c367, type: 2}
+  cookedMaterial: {fileID: 2100000, guid: bddbd01ef2ddd6b4484db1dda8acb5af, type: 2}
+  burnedMaterial: {fileID: 2100000, guid: 663b264c18822d84b84a6339c05b98a0, type: 2}
+  src: {fileID: 528610423117327514}
   plateItem: 0
   foodItem: 1
-  cookTime: 3
-  src: {fileID: 528610423117327514}
-  cookedMaterial: {fileID: 2100000, guid: bddbd01ef2ddd6b4484db1dda8acb5af, type: 2}
+  cooked: 0
 --- !u!82 &528610423117327514
 AudioSource:
   m_ObjectHideFlags: 0

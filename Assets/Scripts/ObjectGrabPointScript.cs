@@ -8,7 +8,7 @@ public class ObjectGrabPointScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("aa");
     }
 
     // Update is called once per frame
@@ -26,13 +26,13 @@ public class ObjectGrabPointScript : MonoBehaviour
             // trigger = true;
             // Debug.Log("ObjectGrabPointScript: OnTriggerStay");
             
-            Vector3 objectPosition = other.gameObject.transform.position;
+/*             Vector3 objectPosition = other.gameObject.transform.position;
             Vector3 grabPosition = gameObject.transform.position;
-            Vector3 newGrabPosition = objectPosition - grabPosition;
+            Vector3 newGrabPosition = objectPosition - grabPosition; */
             // gameObject.transform.localPosition -= newGrabPosition;
             // Debug.Log(objectPosition);
             // Debug.Log(grabPosition);
-            Debug.Log(newGrabPosition);
+/*             Debug.Log(newGrabPosition); */
             // Debug.Log(other.transform);
         }
         // gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
@@ -45,9 +45,9 @@ public class ObjectGrabPointScript : MonoBehaviour
         {
             // trigger = false;
             // Debug.Log("ObjectGrabPointScript: OnTriggerExit");
-            Vector3 defaultLocalPosition = Vector3.zero;
+/*             Vector3 defaultLocalPosition = Vector3.zero;
             defaultLocalPosition.z = 1.5f;
-            gameObject.transform.localPosition = defaultLocalPosition;
+            gameObject.transform.localPosition = defaultLocalPosition; */
         }
         
         // if (!other.TryGetComponent(out ObjectGrabbable objectGrabbable))

@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class ObjectGrabbable : MonoBehaviour
 {
-    public bool playing;
     public new string name;
+    [SerializeField] float cookedTimer;
+    [SerializeField] float cookTime;
+    [SerializeField] float burnTime;
+    [SerializeField] Material rawMaterial;
+    [SerializeField] Material cookedMaterial;
+    [SerializeField] Material burnedMaterial;
+    [SerializeField] AudioSource src;
+    
     public bool plateItem;
     public bool foodItem;
-    public float cookTime;
-    // AudioClip cookingAudio;
-    [SerializeField] AudioSource src;
-    // testr bb;
-    public Material cookedMaterial;
+    public bool cooked;
+
+    bool playing;
     float range;
     Rigidbody rb;
     Transform objectGrabPointTransform;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,7 +34,7 @@ public class ObjectGrabbable : MonoBehaviour
         if (!foodItem)
             return;
 
-        range = gameObject.transform.localScale.y * 1.2f;
+        range = 0.1f;
     }
 
     // Update is called once per frame
@@ -37,6 +43,7 @@ public class ObjectGrabbable : MonoBehaviour
         if (!foodItem)
             return;
 
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down * range));
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down * range), out RaycastHit raycastHit, range))
         {
             if (raycastHit.transform.gameObject.tag == "Stove")
@@ -46,8 +53,7 @@ public class ObjectGrabbable : MonoBehaviour
                     playing = true;
                     src.Play();
                 }
-                cookTime -= Time.deltaTime;
-                Debug.Log("Cooking");
+                cookedTimer += Time.deltaTime;
             }
         }
         else
@@ -56,10 +62,26 @@ public class ObjectGrabbable : MonoBehaviour
             src.Stop();
         }
 
-        if (cookTime <= 0)
+        if (cookedTimer >= burnTime && burnTime != -1)
         {
-            gameObject.GetComponent<Renderer>().material = cookedMaterial;
-            // Debug.Log("Done Cooking");
+            cooked = false;
+
+            if (burnedMaterial != null)
+                gameObject.GetComponent<Renderer>().material = burnedMaterial;
+        }
+        else if (cookedTimer >= cookTime && cookTime != -1)
+        {
+            cooked = true;
+
+            if (cookedMaterial != null)
+                gameObject.GetComponent<Renderer>().material = cookedMaterial;
+        }
+        else
+        {
+            cooked = false;
+
+            if (rawMaterial != null)
+                gameObject.GetComponent<Renderer>().material = rawMaterial;
         }
     }
 

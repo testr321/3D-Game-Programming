@@ -21,16 +21,16 @@ public class PlateScript : MonoBehaviour
 
     public void PickUpItems()
     {
-        Debug.Log("PlateScript: PickUpItems");
+        // Debug.Log("PlateScript: PickUpItems");
         Collider[] colliderArray = Physics.OverlapBox(
-            transform.position + placeItemsBoxCollider.center, 
-            placeItemsBoxCollider.size/2f, 
+            transform.position + placeItemsBoxCollider.center,
+            placeItemsBoxCollider.size / 2, 
             placeItemsBoxCollider.transform.rotation);
 
-        Debug.Log("PlateScript :" + colliderArray.Length);
+        // Debug.Log("PlateScript :" + colliderArray.Length);
         foreach (Collider collider in colliderArray)
         {
-            Debug.Log("PlateScript :" + collider.transform);
+            // Debug.Log("PlateScript :" + collider.transform);
             if (collider.TryGetComponent(out ObjectGrabbable objectGrabbable))
             {
                 if (!objectGrabbable.plateItem && !collider.TryGetComponent(out FixedJoint fixedJoint))
@@ -45,7 +45,7 @@ public class PlateScript : MonoBehaviour
 
     public void DropItems()
     {
-        Debug.Log("PlateScript: DropItems");
+        // Debug.Log("PlateScript: DropItems");
         // gameObject.transform.DetachChildren();
     }
     
@@ -57,5 +57,17 @@ public class PlateScript : MonoBehaviour
     public List<GameObject> GetItemsOnPlate()
     {
         return (itemsOnPlate);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Color boxColor = Color.red;
+        Vector3 center = transform.position + placeItemsBoxCollider.center;
+        Quaternion rotation = placeItemsBoxCollider.transform.rotation;
+        Vector3 size = placeItemsBoxCollider.size;
+
+        Gizmos.color = boxColor;
+        Gizmos.matrix = Matrix4x4.TRS(center, rotation, Vector3.one);
+        Gizmos.DrawWireCube(Vector3.zero, size);
     }
 }

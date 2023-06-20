@@ -5,21 +5,22 @@ using UnityEngine.UI;
 
 public class HeartUIScript : MonoBehaviour
 {
-    [SerializeField] PlayerScript pScript;
     [SerializeField] Texture2D heartImage;
+    [SerializeField] Vector3 heartPosition;
     [SerializeField] GameObject[] heartList;
 
+    PlayerScript playerScript;
     void Awake()
     {
-        int maxHealth = pScript.GetMaxHealth();
-        int health = pScript.GetHealth();
+        playerScript = FindObjectOfType<PlayerScript>();
+        int maxHealth = playerScript.GetMaxHealth();
+        int health = playerScript.GetHealth();
 
         heartList = new GameObject[maxHealth];
-        Vector3 pos = new Vector3(0f, -50f, 0f);
 
         for (int i = 0; i < maxHealth; i++)
         {
-            pos.x += 50f;
+            heartPosition.x += 50f;
 
             GameObject heartGameObject = new GameObject("Heart " + (i + 1));
             heartGameObject.SetActive(false);
@@ -29,7 +30,7 @@ public class HeartUIScript : MonoBehaviour
 
             heartGameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
             heartGameObject.transform.SetParent(gameObject.transform);
-            heartGameObject.transform.localPosition = pos;
+            heartGameObject.transform.localPosition = heartPosition;
             heartList[i] = gameObject.transform.GetChild(i).gameObject;
             if (i < health)
                 heartGameObject.SetActive(true);
@@ -50,10 +51,10 @@ public class HeartUIScript : MonoBehaviour
 
     public void UpdateUI()
     {
-        int maxHealth = pScript.GetMaxHealth();
-        int health = pScript.GetHealth();
+        int maxHealth = playerScript.GetMaxHealth();
+        int health = playerScript.GetHealth();
 
-        Debug.Log(health);
+        // Debug.Log(health);
         for (int i = 0; i < maxHealth; i++)
         {
             if (i < health)

@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Burger
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 161258922509446343, guid: 39be61ecd6ceb4e46a68172e615a5487, type: 3}
-  - {fileID: 161258922509446343, guid: 39be61ecd6ceb4e46a68172e615a5487, type: 3}
-  - {fileID: 161258922509446343, guid: 39be61ecd6ceb4e46a68172e615a5487, type: 3}
+  - {fileID: 7983745595442181284, guid: c92acf05a245c8f44ab8e2819d39de0d, type: 3}
+  - {fileID: 1174321511081268617, guid: 1f2181f6fcdb228428a793b382875b1a, type: 3}
+  - {fileID: 5967019472158110682, guid: f46e10a23d96f5247aaa778c4d1fa49b, type: 3}
+  - {fileID: 8129670092874307388, guid: cf2d9ecbeb37e4347b708a7eb0f5603a, type: 3}
+  - {fileID: 8618506772289446062, guid: af18af9f243f9c148ac8bc60026d9938, type: 3}
+  - {fileID: 2148021502004239550, guid: 2b114e9a7c01c9b42a832a77bd2eb47e, type: 3}
+  - {fileID: 1871149449205184183, guid: 69d21879cfc87324699a2bf23d1e94fb, type: 3}
+  cooked: 00000000000100
