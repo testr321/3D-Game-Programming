@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] int maxHealth = 3;
     [SerializeField] int health = 1;
     [SerializeField] HeartUIScript heartUIScript;
+    [SerializeField] TextMeshProUGUI customerServedText;
     
-    int customersServed;
+    int consecutiveCustomersServed;
+    int score;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        customerServedText.text = score.ToString();
     }
 
     // Update is called once per frame
@@ -35,9 +38,9 @@ public class PlayerScript : MonoBehaviour
             heartUIScript.UpdateUI();
         }
 
-        if (customersServed >= 10)
+        if (consecutiveCustomersServed >= 10)
         {
-            customersServed = 0;
+            consecutiveCustomersServed = 0;
             health++;
             heartUIScript.UpdateUI();
         }
@@ -55,12 +58,14 @@ public class PlayerScript : MonoBehaviour
 
     public void CustomerServed()
     {
-        customersServed++;
+        consecutiveCustomersServed++;
+        score++;
+        customerServedText.text = score.ToString();
     }
 
     public void CustomerLeft()
     {
-        customersServed = 0;
+        consecutiveCustomersServed = 0;
         health--;
         heartUIScript.UpdateUI();
     }
