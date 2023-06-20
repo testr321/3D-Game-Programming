@@ -5074,6 +5074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Burger Buns Top
+  range: 0.06
   cookedTimer: 0
   cookTime: -1
   burnTime: 10

@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectGrabbable : MonoBehaviour
 {
     public new string name;
+    [SerializeField] float range;
     [SerializeField] float cookedTimer;
     [SerializeField] float cookTime;
     [SerializeField] float burnTime;
@@ -20,7 +21,7 @@ public class ObjectGrabbable : MonoBehaviour
     public bool cooked;
 
     bool playing;
-    float range;
+    bool cooking;
     Rigidbody rb;
     Transform objectGrabPointTransform;
 
@@ -28,15 +29,12 @@ public class ObjectGrabbable : MonoBehaviour
     {
         particleSystem = GetComponentInChildren<ParticleSystem>();
         rb = GetComponent<Rigidbody>();
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (!foodItem)
-            return;
-
-        range = 0.1f;
+        if (src != null && particleSystem != null)
+        {
+            src.Stop();
+            particleSystem.Stop();
+        }
     }
 
     // Update is called once per frame
@@ -47,28 +45,31 @@ public class ObjectGrabbable : MonoBehaviour
             
         if (!foodItem)
             return;
-
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down * range));
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down * range), out RaycastHit raycastHit, range))
+        
+        if (cooking)
         {
-            if (raycastHit.transform.gameObject.tag == "Stove")
-            {
-                if (!playing && src != null)
-                {
-                    playing = true;
-                    src.Play();
-                    particleSystem.Play();
-                }
+            cookedTimer += Time.deltaTime;
+        }
 
-                cookedTimer += Time.deltaTime;
-            }
-        }
-        else
-        {
-            playing = false;
-            src.Stop();
-            particleSystem.Stop();
-        }
+        // Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down * range));
+        // if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down * range), out RaycastHit raycastHit, range))
+        // {
+        //     if (raycastHit.transform.gameObject.tag == "Stove")
+        //     {
+        //         if (!playing && src != null && particleSystem != null)
+        //         {
+        //             playing = true;
+        //             src.Play();
+        //             particleSystem.Play();
+        //         }
+        //     }
+        // }
+        // else
+        // {
+        //     playing = false;
+        //     src.Stop();
+        //     particleSystem.Stop();
+        // }
 
         if (cookedTimer >= burnTime && burnTime != -1)
         {
@@ -117,9 +118,23 @@ public class ObjectGrabbable : MonoBehaviour
         rb.isKinematic = false;
     }
 
-    public void PlayCookingAudio()
+    public void StartCook()
     {
-        // src.clip = cookingAudio;
-        // src.Play();
+        cooking = true;
+        if (src != null && particleSystem != null)
+        {
+            src.Play();
+            particleSystem.Play();
+        }
+    }
+
+    public void StopCook()
+    {
+        cooking = false;
+        if (src != null && particleSystem != null)
+        {
+            src.Stop();
+            particleSystem.Stop();
+        }
     }
 }

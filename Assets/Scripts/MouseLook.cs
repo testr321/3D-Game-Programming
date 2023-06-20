@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MouseLook : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
+    public float mouseSensitivity;
+    [SerializeField] TextMeshProUGUI sensitivityText; 
     public Transform playerBody;
-    float xRotation = 0f;
+    float xRotation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,11 @@ public class MouseLook : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
+    }
 
+    public void SetSensitivity(float sensitivity)
+    {
+        sensitivityText.text = sensitivity.ToString("F2");
+        mouseSensitivity = sensitivity * 100;
     }
 }
