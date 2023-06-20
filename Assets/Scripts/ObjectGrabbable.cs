@@ -12,6 +12,8 @@ public class ObjectGrabbable : MonoBehaviour
     [SerializeField] Material cookedMaterial;
     [SerializeField] Material burnedMaterial;
     [SerializeField] AudioSource src;
+    new ParticleSystem particleSystem;
+
     
     public bool plateItem;
     public bool foodItem;
@@ -24,8 +26,8 @@ public class ObjectGrabbable : MonoBehaviour
 
     void Awake()
     {
+        particleSystem = GetComponentInChildren<ParticleSystem>();
         rb = GetComponent<Rigidbody>();
-        // bb = GetComponent<testr>();
     }
 
     // Start is called before the first frame update
@@ -55,7 +57,9 @@ public class ObjectGrabbable : MonoBehaviour
                 {
                     playing = true;
                     src.Play();
+                    particleSystem.Play();
                 }
+
                 cookedTimer += Time.deltaTime;
             }
         }
@@ -63,6 +67,7 @@ public class ObjectGrabbable : MonoBehaviour
         {
             playing = false;
             src.Stop();
+            particleSystem.Stop();
         }
 
         if (cookedTimer >= burnTime && burnTime != -1)
