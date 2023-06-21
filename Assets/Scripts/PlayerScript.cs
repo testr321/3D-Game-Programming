@@ -57,6 +57,7 @@ public class PlayerScript : MonoBehaviour
             return;
 
         consecutiveCustomersServed = 0;
+        nextLifeText.text =  (10 - consecutiveCustomersServed).ToString();
 
         if (health >= maxHealth)
             return;

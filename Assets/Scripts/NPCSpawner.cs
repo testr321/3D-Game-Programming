@@ -19,6 +19,11 @@ public class NPCSpawner : MonoBehaviour
     {
         if (LevelChanger.isChangingScene)
             return;
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            Instantiate(npcPrefab, spawnPosition, spawnRotation);
+        }
             
         if (remainingTime <= 0)
         {
