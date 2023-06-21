@@ -102,7 +102,7 @@ public class OrderScript : MonoBehaviour
                         
                         Debug.Log("Order Cooked: " + order.cooked[i]);
                         Debug.Log("Item Cooked: " + itemObjectGrabbable.cooked);
-                        if (order.items[i].GetComponent<ObjectGrabbable>().name == itemObjectGrabbable.name && order.cooked[i] == itemObjectGrabbable.cooked)
+                        if (order.items[i].GetComponent<ObjectGrabbable>().name == itemObjectGrabbable.name && order.cooked[i] == itemObjectGrabbable.cooked && !itemObjectGrabbable.burned)
                         {
                             temp.Add(item);
                             Debug.Log("added item" + item);

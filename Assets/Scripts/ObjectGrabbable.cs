@@ -19,6 +19,7 @@ public class ObjectGrabbable : MonoBehaviour
     public bool plateItem;
     public bool foodItem;
     public bool cooked;
+    public bool burned;
 
     bool playing;
     bool cooking;
@@ -74,6 +75,7 @@ public class ObjectGrabbable : MonoBehaviour
         if (cookedTimer >= burnTime && burnTime != -1)
         {
             cooked = false;
+            burned = true;
 
             if (burnedMaterial != null)
                 gameObject.GetComponent<Renderer>().material = burnedMaterial;
