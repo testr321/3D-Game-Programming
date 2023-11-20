@@ -23,7 +23,7 @@ public class PauseMenu : MonoBehaviour
         if (LevelChanger.isChangingScene)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (gameIsPaused)
             {
