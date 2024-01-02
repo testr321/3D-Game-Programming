@@ -32,7 +32,7 @@ public class HeartUIScript : MonoBehaviour
             heartList[i] = gameObject.transform.GetChild(i).gameObject;
             if (i < health)
                 heartGameObject.SetActive(true);
-            heartPosition.x += 100f;
+            heartPosition.x += 120f;
         }
     }
 
